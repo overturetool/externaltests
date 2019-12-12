@@ -73,7 +73,7 @@ definitions
 types 
   Try :: try1 : nat 
          try2 : nat
-  inv inv_try == (inv_try.try1 = 1)
+  inv in_try == (in_try.try1 = 1)
 
 values
   mk_(a,b) : int * int = mk_(100,200);

@@ -138,7 +138,7 @@ instance variables
   private num : nat := 0;
 
   -- we limit the number of inserted stimuli
-  protected max_stimuli : nat := 0;
+  protected mx_stimuli : nat := 0;
 
   -- administration for the event traces
   -- e2s is used for all out-going stimuli (environment to system)
@@ -158,7 +158,7 @@ functions
   
 operations
   public EnvironmentTask: nat ==> EnvironmentTask
-  EnvironmentTask (pno) == max_stimuli := pno;
+  EnvironmentTask (pno) == mx_stimuli := pno;
 
   public getNum: () ==> nat
   getNum () == ( dcl res : nat := num; num := num + 1; return res );
@@ -205,7 +205,7 @@ sync
   -- getNum is mutually exclusive to ensure unique values
   mutex (getNum);
   -- getMinMaxAverage is blocked until all responses have been received
-  per getMinMaxAverage => card dom s2e >= max_stimuli
+  per getMinMaxAverage => card dom s2e >= mx_stimuli
 
 end EnvironmentTask
 class VolumeKnob
